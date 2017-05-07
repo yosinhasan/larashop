@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Welcome</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -67,27 +67,48 @@
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
+            <div class="top-right links">
+                @if (Auth::check())
+                <a href="#">
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                @else
+                <a href="{{ url('/login') }}">Login</a>
+                <a href="{{ url('/register') }}">Register</a>
+                @endif
+            </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    MY STORE
                 </div>
-
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    @if (Auth::check())
+                    <a href="{{ url('/items') }}">Items</a>
+                    <a href="{{ url('/subscriptions') }}">subscriptions</a>
+                    <a href="{{ url('/orders') }}">orders</a>
+                    <a href="{{ url('/deliveries') }}">Deliveries</a>
+
+                    @if (Auth::user()->hasRole('manager'))
+                    <a href="{{ url('/users') }}">Users</a>
+                    <a href="{{ url('/admin') }}">My admin</a>
+
+                    @else
+                    <a href="{{ url('/cart') }}">Cart</a>
+                    @endif
+                    @else
+                    <h2>PLEASE LOGIN/REGISTER IN ORDER TO CONTINUE</h2>
+                    @endif
                 </div>
             </div>
         </div>

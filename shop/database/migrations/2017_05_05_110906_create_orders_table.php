@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->integer('subscription_id');
+            $table->integer('subscription_id')->nullable();
             $table->smallInteger('status_id')->default(1);
             $table->decimal('total');
             $table->timestamp('paid_at')->nullable();

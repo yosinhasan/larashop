@@ -12,7 +12,7 @@ return [
       | any other location as required by the application or its packages.
      */
 
-    'name' => env('APP_NAME', 'Shop'),
+    'name' => env('APP_NAME', 'Store'),
     /*
       |--------------------------------------------------------------------------
       | Application Environment
@@ -21,9 +21,9 @@ return [
       | This value determines the "environment" your application is currently
       | running in. This may determine how you prefer to configure various
       | services your application utilizes. Set this in your ".env" file.
-      |
+      | production | local
      */
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'local'),
     /*
       |--------------------------------------------------------------------------
       | Application Debug Mode
@@ -142,6 +142,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -202,5 +203,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 ];
