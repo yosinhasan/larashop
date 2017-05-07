@@ -10,5 +10,8 @@ namespace App\Repositories\Impl;
  */
 abstract class AbstractItemRepository extends AbstractBaseRepository implements \App\Repositories\ItemRepository {
 
+    public function getAllByIds($ids) {
+        throw new Exception("method is not implemented");
+    }
 
 }

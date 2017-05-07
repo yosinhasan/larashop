@@ -12,5 +12,8 @@ use App\Repositories\DeliveryRepository;
  */
 abstract class AbstractDeliveryRepository extends AbstractBaseRepository implements DeliveryRepository {
 
+    public function getAllByUserId($userId) {
+        throw new Exception("method is not implemented");
+    }
 
 }
