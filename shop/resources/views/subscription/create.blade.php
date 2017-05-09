@@ -80,7 +80,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $all[$item->id] }}</td>
-                                        <td><a href="{{ url('/item/'.$item->item_id)}}">view</a></td>
+                                        <td><a href="{{ url('/item/'.$item->id)}}">view</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
